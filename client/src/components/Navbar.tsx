@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../utils/auth';
 
 const Navbar = () => {
   const [ loginCheck, setLoginCheck ] = useState(false);
+
+  const navigate = useNavigate();
 
   const checkLogin = () => {
     if(auth.loggedIn()) {
@@ -24,17 +26,32 @@ const Navbar = () => {
       <ul>
       {
         !loginCheck ? (
+          <>
+          <li>
+            <button type="button" id="create-ticket-link">
+              <Link to='/login'>New Ticket</Link>
+            </button>
+          </li>
           <li className='nav-item'>
             <button type='button'>
               <Link to='/login'>Login</Link>
             </button>
           </li>
+          </>
         ) : (
+          <>
+          <li>
+            <button type="button" id="create-ticket-link">
+              <Link to="/create">New Ticket</Link>
+            </button>
+          </li>
           <li className='nav-item'>
             <button type='button' onClick={() => {
               auth.logout();
+              navigate('/login');
             }}>Logout</button>
           </li>
+          </>
         )
       }
       </ul>
