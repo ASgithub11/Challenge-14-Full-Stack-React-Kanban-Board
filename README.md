@@ -78,6 +78,10 @@ The following images show the web application's appearance and functionality:
 
 ![Alt text](client/src/assets/images/KanbanBoard.png)
 
+Link to the deployed site:
+
+https://full-stack-react-kanban-board.onrender.com
+
 ## License
 
 MIT License
